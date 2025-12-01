@@ -100,7 +100,44 @@ class LinkedList {
             currNode = currNode.nextNode;
         }
     }
+
+    insertAt(value, index){
+        
+        let currNode = this.head;
+
+        let newNode = new Node();
+        newNode.value = value;
+
+        for (let i=0; i < index-1; i++){
+            
+            currNode = currNode.nextNode;
+        }
+        
+        newNode.nextNode = currNode.nextNode;
+        currNode.nextNode = newNode;
+
+        this.size++;
+
+    }
+
+    removeAt(index) {
+        let prevNode = this.head;
+
+        for (let i=0; i < index-1; i++){
+            prevNode = prevNode.nextNode;
+        }
+
+        let nextNode = prevNode.nextNode.nextNode;
+        let currNode = prevNode.nextNode;
+
+        prevNode.nextNode = nextNode;
+        currNode.nextNode = null;
+
+        this.size--;
+
+    }
 }
+
 
 class Node {
     constructor () {
